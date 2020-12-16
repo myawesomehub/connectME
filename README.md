@@ -1,3 +1,6 @@
+# WHY ?
+I have created this project just to practive how I can connect my MySQL database with my NodeJS App . Latter anyone or me can use this project to integrate in their Mobile app or web app . 
+
 # Codes Samples
 1. First I am importing the modules . Using faker for some fake emails and dates and mysql2 to allow our app to communicate with database . 
 ```
