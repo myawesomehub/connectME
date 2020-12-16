@@ -1,3 +1,43 @@
+# Codes Samples
+1. First I am importing the modules . Using faker for some fake emails and dates and mysql2 to allow our app to communicate with database . 
+```
+var faker = require('faker');
+var mysql = require('mysql2');
+```
+2. Now here I am giving some information to our node app so that it get coonects with my local MySQL database . 
+```
+var connection = mysql.createConnection({
+    host : 'localhost',
+    user : 'root',
+    password : '542626' ,
+    database : 'connectME'
+});  
+```
+3. Here I am storing my all fake emails and dates in an array . And I will fatch users from that array latter . 
+```
+var person = {
+    email: faker.internet.email(),
+    created_at: faker.date.past()
+};
+
+var data = [];
+for(var i = 0; i < 500; i++){
+    data.push([
+        faker.internet.email(),
+        faker.date.past()
+    ]);
+}
+
+
+var q = 'INSERT INTO users (email, created_at) VALUES ?';
+
+connection.query(q, [data], function(err, result) {
+  console.log(err);
+  console.log(result);
+});
+
+connection.end();
+```
 # ConnectME
 
 ConnectMe is a Node App which is querying the data from MySQL database . 
@@ -64,44 +104,3 @@ Open `a/nice/path/to/a.file` then edit it with your settings. You will need:
 ## Simple build for production
 
     $ yarn build
-
-# Codes Samples
-1. First I am importing the modules . Using faker for some fake emails and dates and mysql2 to allow our app to communicate with database . 
-```
-var faker = require('faker');
-var mysql = require('mysql2');
-```
-2. Now here I am giving some information to our node app so that it get coonects with my local MySQL database . 
-```
-var connection = mysql.createConnection({
-    host : 'localhost',
-    user : 'root',
-    password : '542626' ,
-    database : 'connectME'
-});  
-```
-3. Here I am storing my all fake emails and dates in an array . And I will fatch users from that array latter . 
-```
-var person = {
-    email: faker.internet.email(),
-    created_at: faker.date.past()
-};
-
-var data = [];
-for(var i = 0; i < 500; i++){
-    data.push([
-        faker.internet.email(),
-        faker.date.past()
-    ]);
-}
-
-
-var q = 'INSERT INTO users (email, created_at) VALUES ?';
-
-connection.query(q, [data], function(err, result) {
-  console.log(err);
-  console.log(result);
-});
-
-connection.end();
-```
