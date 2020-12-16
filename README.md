@@ -109,6 +109,6 @@ Open `a/nice/path/to/a.file` then edit it with your settings. You will need:
     $ yarn build
 
 # Contact 
-[Mohammad Yasir](https://linkedin.com/in/my-pro-file)
-[Click Here](https://github.com/myawesomehub)
+- [Mohammad Yasir](https://linkedin.com/in/my-pro-file)
+- [Click Here](https://github.com/myawesomehub)
 
