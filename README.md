@@ -71,7 +71,7 @@ Open `a/nice/path/to/a.file` then edit it with your settings. You will need:
 var faker = require('faker');
 var mysql = require('mysql2');
 ```
-
+2. Now here I am giving some information to our node app so that it get coonects with my local MySQL database . 
 ```
 var connection = mysql.createConnection({
     host : 'localhost',
@@ -79,7 +79,9 @@ var connection = mysql.createConnection({
     password : '542626' ,
     database : 'connectME'
 });  
-
+```
+3. Here I am storing my all fake emails and dates in an array . And I will fatch users from that array latter . 
+```
 var person = {
     email: faker.internet.email(),
     created_at: faker.date.past()
