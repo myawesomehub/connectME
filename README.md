@@ -1,6 +1,6 @@
 # ConnectME
 
-ConnectMe is a Node App which is querying the data from MySQL database . I am using mysql package inorder to connect my database with node app .
+ConnectMe is a Node App which is querying the data from MySQL database . 
 
 ---
 ## Requirements
@@ -64,3 +64,42 @@ Open `a/nice/path/to/a.file` then edit it with your settings. You will need:
 ## Simple build for production
 
     $ yarn build
+
+# Codes Samples
+1. First I am importing the modules . Using faker for some fake emails and dates and mysql2 to allow our app to communicate with database . 
+```
+var faker = require('faker');
+var mysql = require('mysql2');
+```
+
+```
+var connection = mysql.createConnection({
+    host : 'localhost',
+    user : 'root',
+    password : '542626' ,
+    database : 'connectME'
+});  
+
+var person = {
+    email: faker.internet.email(),
+    created_at: faker.date.past()
+};
+
+var data = [];
+for(var i = 0; i < 500; i++){
+    data.push([
+        faker.internet.email(),
+        faker.date.past()
+    ]);
+}
+
+
+var q = 'INSERT INTO users (email, created_at) VALUES ?';
+
+connection.query(q, [data], function(err, result) {
+  console.log(err);
+  console.log(result);
+});
+
+connection.end();
+```
